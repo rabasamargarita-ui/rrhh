@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margarita Rabasa - Gestión de Talento & Cultura</title>
+  
+  <!-- Tipografía Oficial: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PALETA CORE OFICIAL */
+    :root {
+      --primary-navy: #1A365D;      
+      --secondary-teal: #2D4A53;    
+      --cool-grey: #94A3B8;         
+      --light-ice: #F1F5F9;         
+      
+      --neutral-dark: #0F172A;      
+      --neutral-muted: #475569;
+      --glass-bg: rgba(255, 255, 255, 0.92);
+      --glass-border: rgba(26, 54, 93, 0.15);
+      --glass-shadow: rgba(26, 54, 93, 0.08);
+    }
+
+    /* ESTILOS GENERALES & RESET */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-ice);
+      color: var(--neutral-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding: 20px 0;
+    }
+
+    .brand-container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* CABECERA */
+    .brand-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--cool-grey);
+      margin-bottom: 48px;
+    }
+
+    .brand-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .isotype-svg {
+      width: 36px;
+      height: 36px;
+      color: var(--primary-navy);
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-badge {
+      background-color: var(--primary-navy);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* SECCIÓN HERO */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 64px;
+      background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+      padding: 48px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px var(--glass-shadow);
+    }
+
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 32px;
+      }
+    }
+
+    .hero-glass-card {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 36px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px var(--glass-shadow);
+    }
+
+    .hero-content h1 {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: -0.8px;
+    }
+
+    .hero-content h1 span {
+      color: var(--secondary-teal);
+    }
+
+    .hero-content p {
+      font-size: 15px;
+      color: var(--neutral-muted);
+      margin-bottom: 0;
+    }
+
+    /* CONTENEDOR DE PERFIL CON TU FOTO REAL */
+    .speaker-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .speaker-avatar-circle {
+      width: 155px;
+      height: 155px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-teal) 100%);
+      border: 4px solid white;
+      box-shadow: 0 8px 24px rgba(26, 54, 93, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .speaker-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .speaker-info h3 {
+      font-size: 18px;
+      color: var(--primary-navy);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .speaker-info p {
+      font-size: 13px;
+      color: var(--neutral-muted);
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* SECCIÓN: SERVICIOS */
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--neutral-muted);
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 40px auto;
+    }
+
+    /* Estructura contenedora para no romper las tarjetas de al lado */
+    .services-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pillar-card {
+      background-color: white;
+      border-radius: 16px;
+      padding: 22px 24px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 165px;
+      cursor: pointer;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+      border-color: var(--primary-navy);
+    }
+
+    .pillar-card.active {
+      border: 2px solid var(--primary-navy);
+      background-color: var(--light-ice);
+    }
+
+    .pillar-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      background-color: var(--light-ice);
+      color: var(--primary-navy);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .pillar-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 8px;
+    }
+
+    .pillar-card p {
+      font-size: 12.5px;
+      color: var(--neutral-muted);
+      line-height: 1.45;
+    }
+
+    .pillar-action {
+      margin-top: auto;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--secondary-teal);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding-top: 10px;
+    }
+
+    /* DESPLEGABLE DINÁMICO E INTELIGENTE EN CSS GRID (Nativo de la grilla) */
+    .service-detail-drawer {
+      display: none;
+      grid-column: 1 / -1; /* Ocupa todo el ancho horizontal de la grilla */
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: var(--glass-bg);
+      border: 2px solid var(--primary-navy);
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      animation: slideDown 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 12px 36px var(--glass-shadow);
+      width: 100%;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .drawer-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-navy);
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--neutral-muted);
+      font-size: 24px;
+    }
+
+    .drawer-content {
+      font-size: 14.5px;
+      color: var(--neutral-dark);
+      margin-bottom: 16px;
+    }
+
+    .drawer-section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--neutral-muted);
+      margin-top: 16px;
+      margin-bottom: 10px;
+    }
+
+    /* Lista vertical una debajo de la otra */
+    .drawer-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .drawer-bullets li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 13.5px;
+      color: var(--neutral-dark);
+    }
+
+    .drawer-bullets li::before {
+      content: "•";
+      color: var(--primary-navy);
+      font-weight: bold;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+      top: -3px;
+    }
+
+    /* SECCIÓN: PROPUESTA COMERCIAL */
+    .proposals-section {
+      margin-bottom: 72px;
+    }
+
+    .proposals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .proposal-card {
+      background-color: white;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .proposal-card.featured {
+      border: 2px solid var(--primary-navy);
+      box-shadow: 0 10px 25px rgba(26, 54, 93, 0.05);
+    }
+
+    .proposal-card-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background-color: var(--primary-navy);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .proposal-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 12px;
+    }
+
+    .proposal-card p {
+      font-size: 13.5px;
+      color: var(--neutral-muted);
+      margin-bottom: 24px;
+      flex-grow: 1; /* Rellena el espacio sobrante para empujar simétricamente el pie */
+    }
+
+    /* Alineación simétrica perfecta */
+    .proposal-footer-block {
+      margin-top: auto; 
+    }
+
+    .proposal-steps-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--neutral-muted);
+      margin-bottom: 10px;
+      height: 16px; 
+    }
+
+    .proposal-steps {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .proposal-step {
+      font-size: 11px;
+      font-weight: 600;
+      background-color: var(--light-ice);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: var(--primary-navy);
+    }
+
+    .proposal-step.arrow-next::after {
+      content: "➔";
+      margin-left: 8px;
+      color: var(--cool-grey);
+    }
+
+    /* FOOTER/CTA CON CANVAS INDEPENDIENTE */
+    .brand-cta {
+      background-color: var(--primary-navy);
+      border-radius: 24px;
+      padding: 64px 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+    }
+
+    .cta-background-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .brand-cta-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand-cta p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 650px;
+      margin: 0 auto 32px auto;
+      font-weight: 500;
+    }
+
+    .brand-cta-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cta-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 16px 24px;
+      border-radius: 12px;
+      min-width: 280px;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .cta-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .cta-card span {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.6);
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-card a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-card a:hover {
+      color: var(--cool-grey);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-container">
+
+    <!-- CABECERA -->
+    <header class="brand-header">
+      <div class="brand-logo-area">
+        <svg class="isotype-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="50" cy="30" r="14" fill="rgba(148, 163, 184, 0.3)" />
+          <circle cx="25" cy="70" r="10" />
+          <circle cx="75" cy="70" r="10" />
+          <path d="M50,44 L25,60" />
+          <path d="M50,44 L75,60" />
+          <path d="M25,70 L75,70" stroke-dasharray="4,4" />
+        </svg>
+        <span class="brand-name">Margarita Rabasa.</span>
+      </div>
+      <div class="brand-badge">Lic. Recursos Humanos</div>
+    </header>
+
+    <!-- SECCIÓN HERO -->
+    <section class="hero-section">
+      <div class="hero-glass-card hero-content">
+        <h1>Acompaño a Pymes en expansión que necesitan profesionalizar su gestión de equipo sin la necesidad de estructurar un <span>área interna de RRHH.</span></h1>
+        </p>
+      </div>
+
+      <div class="speaker-container">
+        <div class="speaker-avatar-circle">
+          <!-- Foto pública real cargando directamente desde Postimages -->
+          <img src="https://i.postimg.cc/XvYWgYRh/Whats-App-Image-2026-01-15-at-11-21-30-(1).jpg" alt="Margarita Rabasa" class="speaker-photo" id="profilePhoto" onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
+          <!-- Fallback de iniciales elegantes si el servicio externo de imágenes reportara caídas -->
+          <div id="profileFallback" style="display:none; color: white; font-weight: bold; font-size: 32px; width: 100%; height: 100%; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-teal) 100%);">
+            M.R.
+          </div>
+        </div>
+        <div class="speaker-info">
+          <h3>Margarita Rabasa</h3>
+          <p style="margin-top: 4px; font-weight: 400; color: var(--neutral-muted);">
+            Licenciada en Administración de Recursos Humanos con más de 6 años de trayectoria profesional en organizaciones multinacionales y de tecnología. Especialista en profesionalizar áreas de personas en empresas en crecimiento, implementando procesos de Gestión de Talento, Cultura y Analítica de Datos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS CON DESPLEGABLE DIRECTAMENTE BAJO LA TARJETA -->
+    <section style="margin-bottom: 64px;">
+      <h2 class="section-title">Servicios</h2>
+      </p>
+      
+      <div class="services-wrapper">
+        <div class="pillars-grid" id="servicesGrid">
+          
+          <div class="pillar-card" data-key="gestion_hr" onclick="handleCardClick('gestion_hr', this)">
+            <div class="pillar-badge">Procesos</div>
+            <h3>Gestión de procesos</h3>
+            <p>Diseño procesos claros de administración de personal apoyados en herramientas de IA.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+          <div class="pillar-card" data-key="diagnostico" onclick="handleCardClick('diagnostico', this)">
+            <div class="pillar-badge">Estructura & Roles</div>
+            <h3>Claridad organizativa</h3>
+            <p>Defino organigramas funcionales claros y límites de responsabilidad transparentes.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+          <div class="pillar-card" data-key="liderazgo" onclick="handleCardClick('liderazgo', this)">
+            <div class="pillar-badge">Liderazgo</div>
+            <h3>De expertos a líderes</h3>
+            <p>Capacito y acompaño técnicamente a los referentes con responsabilidades de equipo.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+          <div class="pillar-card" data-key="cultura" onclick="handleCardClick('cultura', this)">
+            <div class="pillar-badge">Cultura e identidad</div>
+            <h3>Sentido de pertenencia</h3>
+            <p>Construyo y alineo la identidad de tu negocio para mitigar de forma activa la rotación.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+          <div class="pillar-card" data-key="analytics" onclick="handleCardClick('analytics', this)">
+            <div class="pillar-badge">Analítica</div>
+            <h3>Decisiones con datos</h3>
+            <p>Sustituyo la pura intuición por la estructuración de KPI's útiles para la toma de decisiones.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+          <div class="pillar-card" data-key="reclutamiento" onclick="handleCardClick('reclutamiento', this)">
+            <div class="pillar-badge">Reclutamiento</div>
+            <h3>Búsqueda & Selección</h3>
+            <p>Acelero el crecimiento sumando talento idóneo alineado al acople cultural de tu Pyme.</p>
+            <div class="pillar-action">Ver detalles <span>➔</span></div>
+          </div>
+
+        </div>
+
+        <!-- Panel de Detalle que se inyecta y reubica dinámicamente debajo de la tarjeta activa en la grilla -->
+        <div class="service-detail-drawer" id="serviceDrawer">
+          <div class="drawer-header">
+            <div class="drawer-title" id="drawerTitle">Detalle de Servicio</div>
+            <button class="drawer-close" onclick="closeServiceDetail()">×</button>
+          </div>
+          
+          <div class="drawer-content" id="drawerContent"></div>
+
+          <div class="drawer-section-title">Entregables:</div>
+          <ul class="drawer-bullets" id="drawerBullets"></ul>
+
+          <div class="drawer-section-title" style="margin-top: 20px;">Valor estratégico para tu negocio:</div>
+          <p class="drawer-content" id="drawerValueContent" style="font-weight: 500; color: var(--primary-navy); margin-bottom: 0;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: MODALIDADES CON PIE ALINEADO -->
+    <section class="proposals-section">
+      <h2 class="section-title">Modalidades de trabajo</h2>
+     </p>
+
+      <div class="proposals-grid">
+        
+        <div class="proposal-card">
+          <h3>1. Proyecto específico</h3>
+          <p>Para empresas que necesitan resolver un dolor o desorden estructural puntual y ya cuentan con personal administrativo interno para mantenerlo en el tiempo una vez implementado.</p>
+          
+          <div class="proposal-footer-block">
+            <div class="proposal-steps-title">Fases del proyecto:</div>
+            <div class="proposal-steps">
+              <span class="proposal-step arrow-next">Diagnóstico</span>
+              <span class="proposal-step arrow-next">Plan estratégico</span>
+              <span class="proposal-step arrow-next">Implementación</span>
+              <span class="proposal-step">Cierre</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>2. Servicio End-to-End</h3>
+          <p>Proyectos completos con un principio y fin claro, tales como una búsqueda de personal o la creación de un Manual del Empleado.</p>
+          
+          <div class="proposal-footer-block">
+            <div class="proposal-steps-title">Fases del proyecto:</div>
+            <div class="proposal-steps">
+              <span class="proposal-step arrow-next">Diagnóstico</span>
+              <span class="proposal-step arrow-next">Diseño de plan</span>
+              <span class="proposal-step">Ejecución y Cierre</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proposal-card featured">
+          <div class="proposal-card-badge">Más Elegido</div>
+          <h3>3. Abono Mensual</h3>
+          <p>Para Pymes en desarrollo que no pueden o no desean costear un área in-house permanente pero necesitan una profesional externa continua para liderar Recursos Humanos de forma mensual.</p>
+          
+          <div class="proposal-footer-block">
+            <div class="proposal-steps-title">Fases del proyecto:</div>
+            <div class="proposal-steps">
+              <span class="proposal-step arrow-next">Diagnóstico</span>
+              <span class="proposal-step arrow-next">Despliegue</span>
+              <span class="proposal-step">Monitoreo & Gestión</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leyenda ad-hoc simplificada sin "de tu organización" -->
+      <p style="text-align: center; margin-top: 32px; font-size: 14.5px; color: var(--neutral-muted); font-style: italic;">
+        * ¿Tus desafíos requieren otro enfoque? También cuento con la flexibilidad para diseñar una <strong>solución personalizada ad-hoc</strong> completamente a medida.
+      </p>
+    </section>
+
+    <!-- SECCIÓN DE CONTACTO (SÓLO BOTONES Y CANVAS INTERACTIVO, SIN TÍTULO EXCESIVO) -->
+    <section class="brand-cta">
+      <canvas id="ctaCanvas" class="cta-background-canvas"></canvas>
+      <div class="brand-cta-content">
+        <p>Establezcamos una organización humana, ágil y preparada para crecer de forma sustentable. Contactame para agendar una sesión inicial de diagnóstico sin cargo.</p>
+        
+        <div class="brand-cta-grid">
+          <div class="cta-card">
+            <span>Mail</span>
+            <a href="mailto:rabasamargarita@gmail.com?subject=Diagnóstico%20Margarita%20Rabasa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              rabasamargarita@gmail.com
+            </a>
+          </div>
+          <div class="cta-card">
+            <span>WhatsApp</span>
+            <a href="https://wa.me/5492392610573?text=Hola%20Margarita,%20me%20interesa%20agendar%20un%20diagnóstico%20para%20mi%20Pyme" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              + 54 2392 15610573
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    /* SIMULADOR DE NODOS INTERACTIVOS (CANVAS DEL CONTACTO) */
+    const canvasCTA = document.getElementById('ctaCanvas');
+    const ctxCTA = canvasCTA.getContext('2d');
+    let particles = [];
+    const maxParticles = 35;
+    const connectionDist = 95;
+    const mouse = { x: null, y: null, radius: 120 };
+
+    function resizeCanvas() {
+      if (canvasCTA) {
+        canvasCTA.width = canvasCTA.parentElement.clientWidth;
+        canvasCTA.height = canvasCTA.parentElement.clientHeight;
+        initParticles();
+      }
+    }
+
+    class Particle {
+      constructor(canvasWidth, canvasHeight) {
+        this.x = Math.random() * canvasWidth;
+        this.y = Math.random() * canvasHeight;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.radius = Math.random() * 3 + 3;
+        const colors = ['#2D4A53', '#94A3B8', '#FFFFFF', '#41BDF5'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update(canvasWidth, canvasHeight) {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvasWidth) this.vx *= -1;
+        if (this.y < 0 || this.y > canvasHeight) this.vy *= -1;
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            this.x += dx * 0.015;
+            this.y += dy * 0.015;
+          }
+        }
+      }
+      draw(context) {
+        context.beginPath();
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        context.fillStyle = this.color;
+        context.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push(new Particle(canvasCTA.width, canvasCTA.height));
+      }
+    }
+
+    function animate() {
+      if (canvasCTA) {
+        ctxCTA.clearRect(0, 0, canvasCTA.width, canvasCTA.height);
+        particles.forEach(p => {
+          p.update(canvasCTA.width, canvasCTA.height);
+          p.draw(ctxCTA);
+        });
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDist) {
+              ctxCTA.beginPath();
+              ctxCTA.moveTo(particles[i].x, particles[i].y);
+              ctxCTA.lineTo(particles[j].x, particles[j].y);
+              const alpha = (1 - (dist / connectionDist)) * 0.25;
+              ctxCTA.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
+              ctxCTA.lineWidth = 1;
+              ctxCTA.stroke();
+            }
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    canvasCTA.parentElement.addEventListener('mousemove', (e) => {
+      const rect = canvasCTA.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    canvasCTA.parentElement.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      animate();
+    });
+
+    /* BASE DE DATOS DE SERVICIOS */
+    const servicesData = {
+      gestion_hr: {
+        title: "Gestión de procesos de Recursos Humanos",
+        desc: "Construcción integral de la infraestructura básica indispensable para profesionalizar las interacciones, beneficios y el ciclo laboral de tus colaboradores, con foco en inteligencia artificial para automatizar los procesos y disminuir en la medida de lo posible la carga operativa.",
+        value: "Establecé reglas de juego equitativas, transparentes y homogéneas, mitigando riesgos operativos y mejorando la satisfacción interna.",
+        bullets: [
+          "Elaboración de un Manual del Empleado personalizado y alineado a tus valores.",
+          "Definición estratégica y justa de políticas de beneficios.",
+          "Estructura sistemática para el ciclo de vida del colaborador (procesos de Onboarding y Offboarding)."
+        ]
+      },
+      diagnostico: {
+        title: "Diagnóstico de estructura y roles",
+        desc: "Ideal para organizaciones que crecieron rápidamente y se encuentran en una situación operativa confusa donde 'todos hacen de todo'. Te brindo claridad absoluta sobre tareas, límites de puestos y reportes de forma inmediata.",
+        value: "Elimina los solapamientos de funciones, previene el desgaste del equipo y facilita una organización interna estructurada, lista para escalar de manera sustentable.",
+        bullets: [
+          "Diseño del organigrama adaptado al modelo real de tu negocio.",
+          "Redacción de Descripciones de Puestos (Job Descriptions) claras y detalladas.",
+          "Matriz de responsabilidades y toma de decisiones (quién decide qué)."
+        ]
+      },
+      liderazgo: {
+        title: "Programa de liderazgo",
+        desc: "Diseñado especialmente para expertos y referentes técnicos sumamente valiosos en tu campo, que heredaron o asumieron equipos pero no cuentan con experiencia formal previa en liderazgo, feedback y gestión de personas.",
+        value: "Profesionaliza el mando medio de tu empresa y evita activamente la rotación silenciosa ocasionada por brechas en el liderazgo cotidiano.",
+        bullets: [
+          "Sesiones individuales de acompañamiento 1:1 adaptadas al ritmo de cada profesional.",
+          "Talleres prácticos y cercanos de feedback constructivo.",
+          "Estrategias de comunicación asertiva y resolución de conflictos internos.",
+          "Herramientas de optimización y gestión del tiempo."
+        ]
+      },
+      cultura: {
+        title: "Cultura e identidad interna",
+        desc: "Para empresas que desean formalizar y consolidar una identidad interna fuerte que actúe como un imán para el talento y como un motor de fidelización para el logro de metas.",
+        value: "Aumenta considerablemente el sentido de pertenencia y alinea el comportamiento del equipo con los objetivos estratégicos, reduciendo la rotación no deseada.",
+        bullets: [
+          "Planificación de eventos corporativos estratégicos.",
+          "Diseño de actividades de construcción de equipos (Team Buildings).",
+          "Implementación y análisis técnico de Encuesta de Clima."
+        ]
+      },
+      analytics: {
+        title: "People Analytics",
+        desc: "Construcción de dashboards de visualización de datos de personas para impulsar la toma de decisiones empresariales basadas en evidencia empírica en lugar de en la pura intuición.",
+        value: "Transforma la intuición operativa en datos y estadísticas tangibles, permitiendo visualizar la información de tus empleados de forma rápida y sencilla.",
+        bullets: [
+          "Recopilación estructurada de la información interna de tus equipos.",
+          "Armado, limpieza y estandarización de bases de datos de personas.",
+          "Paneles interactivos en Google Sheets o Looker Studio que consolidan las métricas clave de Recursos Humanos."
+        ]
+      },
+      reclutamiento: {
+        title: "Reclutamiento y Selección",
+        desc: "Servicio ágil de identificación y evaluación de candidatos con foco profundo en la cultura, competencias técnicas y el perfil requerido para que la adaptación sea óptima desde el primer día.",
+        value: "Optimiza los tiempos del líder del negocio al asumir el proceso completo de filtrado, presentando únicamente una terna finalista altamente calificada.",
+        bullets: [
+          "Estrategia y publicación de vacantes en portales idóneos.",
+          "Entrevistas por competencias personalizadas.",
+          "Presentación de terna finalista asegurando la alineación cultural."
+        ]
+      }
+    };
+
+    const drawer = document.getElementById('serviceDrawer');
+    const drawerTitle = document.getElementById('drawerTitle');
+    const drawerContent = document.getElementById('drawerContent');
+    const drawerValueContent = document.getElementById('drawerValueContent');
+    const drawerBullets = document.getElementById('drawerBullets');
+    let currentActiveKey = null;
+
+    /* LÓGICA DE DETALLE: SE ADHIERE DINÁMICAMENTE ABAJO DEL CARD CLICKEADO SIN ALTERAR LA GRILLA */
+    function handleCardClick(serviceKey, cardElement) {
+      if (currentActiveKey === serviceKey) {
+        closeServiceDetail();
+        return;
+      }
+
+      const data = servicesData[serviceKey];
+      if (!data) return;
+
+      const cards = document.querySelectorAll('.pillar-card');
+      cards.forEach(c => c.classList.remove('active'));
+      cardElement.classList.add('active');
+      currentActiveKey = serviceKey;
+
+      drawerTitle.textContent = data.title;
+      drawerContent.textContent = data.desc;
+      drawerValueContent.textContent = data.value;
+      
+      // Armado de entregables en Lista Vertical Limpia
+      drawerBullets.innerHTML = "";
+      data.bullets.forEach(bullet => {
+        const li = document.createElement('li');
+        li.textContent = bullet;
+        drawerBullets.appendChild(li);
+      });
+
+      // El truco definitivo de CSS Grid: se reposiciona inmediatamente después de la tarjeta clickeada
+      cardElement.after(drawer);
+      drawer.style.display = 'block';
+      
+      // Auto-scroll fluido al panel de detalle recién inyectado
+      drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeServiceDetail() {
+      drawer.style.display = 'none';
+      const cards = document.querySelectorAll('.pillar-card');
+      cards.forEach(c => c.classList.remove('active'));
+      currentActiveKey = null;
+    }
+  </script>
+</body>
+</html>

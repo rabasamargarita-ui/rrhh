@@ -11,6 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* COMPORTAMIENTO GLOBAL */
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* PALETA CORE OFICIAL */
     :root {
       --primary-navy: #1A365D;      
@@ -144,6 +149,48 @@
       margin-bottom: 0;
     }
 
+    /* ACCESO RÁPIDO DENTRO DE HERO */
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-quick {
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-quick.primary {
+      background-color: var(--primary-navy);
+      color: white;
+      border: 1.5px solid var(--primary-navy);
+      box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+    }
+
+    .btn-quick.primary:hover {
+      background-color: var(--secondary-teal);
+      border-color: var(--secondary-teal);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .hero-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+      .btn-quick {
+        width: 100%;
+      }
+    }
+
     /* CONTENEDOR DE PERFIL */
     .speaker-container {
       display: flex;
@@ -212,7 +259,7 @@
         border-radius: 16px;
       }
       .speaker-info p {
-        text-align: left; /* Alineado izquierdo en móviles para evitar espacios raros */
+        text-align: left;
       }
       .speaker-avatar-circle {
         width: 135px;
@@ -238,7 +285,6 @@
       margin: 0 auto 40px auto;
     }
 
-    /* Estructura contenedora para no romper las tarjetas de al lado */
     .services-wrapper {
       display: flex;
       flex-direction: column;
@@ -289,18 +335,38 @@
       background-color: var(--light-ice);
     }
 
+    /* BADGES Y CONTENEDOR */
+    .badges-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
     .pillar-badge {
       display: inline-block;
-      align-self: flex-start;
       padding: 3px 10px;
       border-radius: 8px;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 12px;
       background-color: var(--light-ice);
       color: var(--primary-navy);
       border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    /* ETIQUETAS OSCURAS DE CATEGORIZACIÓN (Organización / Talento) */
+    .category-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: var(--primary-navy);
+      color: white;
+      letter-spacing: 0.5px;
     }
 
     .pillar-card h3 {
@@ -327,10 +393,10 @@
       padding-top: 10px;
     }
 
-    /* DESPLEGABLE DINÁMICO E INTELIGENTE EN CSS GRID (Nativo de la grilla) */
+    /* DESPLEGABLE DINÁMICO */
     .service-detail-drawer {
       display: none;
-      grid-column: 1 / -1; /* Ocupa todo el ancho horizontal de la grilla */
+      grid-column: 1 / -1; 
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       background: var(--glass-bg);
@@ -386,7 +452,6 @@
       margin-bottom: 10px;
     }
 
-    /* Lista vertical una debajo de la otra */
     .drawer-bullets {
       display: flex;
       flex-direction: column;
@@ -473,10 +538,9 @@
       font-size: 13.5px;
       color: var(--neutral-muted);
       margin-bottom: 24px;
-      flex-grow: 1; /* Rellena el espacio sobrante para empujar simétricamente el pie */
+      flex-grow: 1; 
     }
 
-    /* Alineación simétrica perfecta */
     .proposal-footer-block {
       margin-top: auto; 
     }
@@ -563,10 +627,11 @@
     }
 
     .brand-cta-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .cta-card {
@@ -574,7 +639,6 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 16px 24px;
       border-radius: 12px;
-      min-width: 280px;
       text-align: left;
       transition: all 0.2s ease;
     }
@@ -582,6 +646,26 @@
     .cta-card:hover {
       background: rgba(255, 255, 255, 0.14);
       transform: translateY(-2px);
+    }
+
+    /* ESTILOS DE TARJETA DE WHATSAPP CON BADGE */
+    .whatsapp-card {
+      position: relative;
+    }
+
+    .whatsapp-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--secondary-teal);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
     }
 
     .cta-card span {
@@ -608,6 +692,12 @@
       color: var(--cool-grey);
     }
 
+    @media (max-width: 768px) {
+      .brand-cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 600px) {
       .brand-cta {
         padding: 40px 16px;
@@ -617,13 +707,13 @@
         font-size: 14.5px;
         margin-bottom: 24px;
       }
-      .brand-cta-grid {
-        flex-direction: column;
-        gap: 12px;
-      }
       .cta-card {
         min-width: 100%;
         padding: 12px 16px;
+      }
+      .whatsapp-badge {
+        top: 8px;
+        right: 8px;
       }
     }
   </style>
@@ -652,11 +742,16 @@
     <section class="hero-section">
       <div class="hero-glass-card hero-content">
         <h1>Acompaño a Pymes en expansión que necesitan profesionalizar su gestión de equipo sin la necesidad de un <span>área interna de RRHH.</span></h1>
+        
+        <!-- BOTÓN DE CONTACTO INTEGRADO Y CENTRADO ABAJO DEL TEXTO -->
+        <div class="hero-actions">
+          <a href="#contactSection" class="btn-quick primary">Contacto</a>
+        </div>
       </div>
 
       <div class="speaker-container">
         <div class="speaker-avatar-circle">
-          <!-- Foto pública real cargando directamente desde Postimages -->
+          <!-- Foto pública real cargando directamente desde tu enlace de Postimages -->
           <img src="https://i.postimg.cc/XvYWgYRh/Whats-App-Image-2026-01-15-at-11-21-30-(1).jpg" alt="Margarita Rabasa" class="speaker-photo" id="profilePhoto" onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
           <!-- Fallback de iniciales si el servicio externo de imágenes reportara caídas -->
           <div id="profileFallback" style="display:none; color: white; font-weight: bold; font-size: 32px; width: 100%; height: 100%; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-teal) 100%);">
@@ -666,56 +761,81 @@
         <div class="speaker-info">
           <h3>Margarita Rabasa</h3>
           <p style="margin-top: 4px; font-weight: 400; color: var(--neutral-muted);">
-            Licenciada en Administración de Recursos Humanos con más de 6 años de trayectoria profesional en organizaciones multinacionales y de tecnología. Especialista en profesionalizar áreas de personas en empresas en crecimiento, implementando procesos de Gestión de Talento, Cultura y Analítica de Datos.
+            Soy Licenciada en Administración de Recursos Humanos, hace más de 6 años trabajo en equipos de RRHH en organizaciones multinacionales y Pymes en expansión. Me especializo en profesionalizar áreas de Gestión de Talento, no busco implementar burocracia, sino crear los procesos base que permitan seguir creciendo de forma ordenada.
           </p>
         </div>
       </div>
     </section>
 
     <!-- SECCIÓN: SERVICIOS CON DESPLEGABLE DIRECTAMENTE BAJO LA TARJETA -->
-    <section style="margin-bottom: 64px;">
+    <section id="servicesSection" style="margin-bottom: 64px;">
       <h2 class="section-title">Servicios</h2>
-    </p>
+      <p class="section-subtitle">Abordo los retos estructurales comunes del crecimiento acelerado bajo mis seis servicios integrales. Hacé clic en cualquiera para conocer sus entregables y valor estratégico:</p>
+      
       <div class="services-wrapper">
         <div class="pillars-grid" id="servicesGrid">
           
+          <!-- Enfoque 1: Gestión de procesos (Organización) -->
           <div class="pillar-card" data-key="gestion_hr" onclick="handleCardClick('gestion_hr', this)">
-            <div class="pillar-badge">Procesos</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Procesos</div>
+              <div class="category-tag">Organización</div>
+            </div>
             <h3>Gestión de procesos</h3>
             <p>Diseño procesos claros de administración de personal apoyados en herramientas de IA.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
           </div>
 
+          <!-- Enfoque 2: Claridad Organizativa (Organización) -->
           <div class="pillar-card" data-key="diagnostico" onclick="handleCardClick('diagnostico', this)">
-            <div class="pillar-badge">Estructura & Roles</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Estructura & Roles</div>
+              <div class="category-tag">Organización</div>
+            </div>
             <h3>Claridad organizativa</h3>
             <p>Defino organigramas funcionales claros y límites de responsabilidad transparentes.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
           </div>
 
+          <!-- Enfoque 3: De expertos a líderes (Talento) -->
           <div class="pillar-card" data-key="liderazgo" onclick="handleCardClick('liderazgo', this)">
-            <div class="pillar-badge">Liderazgo</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Liderazgo</div>
+              <div class="category-tag">Talento</div>
+            </div>
             <h3>De expertos a líderes</h3>
             <p>Capacito y acompaño técnicamente a los referentes con responsabilidades de equipo.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
           </div>
 
+          <!-- Enfoque 4: Sentido de pertenencia (Talento) -->
           <div class="pillar-card" data-key="cultura" onclick="handleCardClick('cultura', this)">
-            <div class="pillar-badge">Cultura e identidad</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Cultura e identidad</div>
+              <div class="category-tag">Talento</div>
+            </div>
             <h3>Sentido de pertenencia</h3>
             <p>Construyo y alineo la identidad de tu negocio para mitigar de forma activa la rotación.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
           </div>
 
+          <!-- Enfoque 5: Decisiones con datos (Organización) -->
           <div class="pillar-card" data-key="analytics" onclick="handleCardClick('analytics', this)">
-            <div class="pillar-badge">Analítica</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Analítica</div>
+              <div class="category-tag">Organización</div>
+            </div>
             <h3>Decisiones con datos</h3>
             <p>Sustituyo la pura intuición por la estructuración de KPI's útiles para la toma de decisiones.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
           </div>
 
+          <!-- Enfoque 6: Búsqueda y Selección (Talento) -->
           <div class="pillar-card" data-key="reclutamiento" onclick="handleCardClick('reclutamiento', this)">
-            <div class="pillar-badge">Reclutamiento</div>
+            <div class="badges-row">
+              <div class="pillar-badge">Reclutamiento</div>
+              <div class="category-tag">Talento</div>
+            </div>
             <h3>Búsqueda y selección</h3>
             <p>Acelero el crecimiento sumando talento idóneo alineado al acople cultural de tu Pyme.</p>
             <div class="pillar-action">Ver detalles <span>➔</span></div>
@@ -744,7 +864,7 @@
     <!-- SECCIÓN: MODALIDADES CON PIE ALINEADO -->
     <section class="proposals-section">
       <h2 class="section-title">Modalidades de trabajo</h2>
-      </p>
+      <p class="section-subtitle">Alineo mi esquema comercial al estado evolutivo, presupuesto y nivel de urgencia de tu negocio:</p>
 
       <div class="proposals-grid">
         
@@ -800,12 +920,14 @@
     </section>
 
     <!-- SECCIÓN DE CONTACTO -->
-    <section class="brand-cta">
+    <section id="contactSection" class="brand-cta">
       <canvas id="ctaCanvas" class="cta-background-canvas"></canvas>
       <div class="brand-cta-content">
-        <p>Establezcamos una organización humana, ágil y preparada para crecer de forma sustentable. Contactame para agendar una sesión inicial de diagnóstico sin cargo.</p>
+        <p>Establezcamos una organización humana, ágil y preparada para crecer de forma sustentable. <strong>Contactame para agendar una sesión inicial de diagnóstico sin cargo.</strong></p>
         
+        <!-- GRILLA DE CONTACTO AMPLIADA CON CV (NUEVO LINK), WHATSAPP CON BADGE Y LINKEDIN -->
         <div class="brand-cta-grid">
+          <!-- Correo -->
           <div class="cta-card">
             <span>Mail</span>
             <a href="mailto:rabasamargarita@gmail.com?subject=Diagnóstico%20Margarita%20Rabasa">
@@ -816,13 +938,41 @@
               rabasamargarita@gmail.com
             </a>
           </div>
-          <div class="cta-card">
+          <!-- WhatsApp con Badge "¡Contactame!" -->
+          <div class="cta-card whatsapp-card">
+            <div class="whatsapp-badge">¡Contactame!</div>
             <span>WhatsApp Directo</span>
             <a href="https://wa.me/5492392610573?text=Hola%20Margarita,%20me%20interesa%20agendar%20un%20diagnóstico%20para%20mi%20Pyme" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
               + 54 2392 15610573
+            </a>
+          </div>
+          <!-- CV (Link Actualizado) -->
+          <div class="cta-card">
+            <span>Currículum</span>
+            <a href="https://i.postimg.cc/KYqpLPh2/CV-Margarita-Rabasa.png" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Ver CV Digital
+            </a>
+          </div>
+          <!-- LinkedIn -->
+          <div class="cta-card">
+            <span>LinkedIn</span>
+            <a href="https://www.linkedin.com/in/margarita-rabasa-4284a3140/" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              Ver Perfil Profesional
             </a>
           </div>
         </div>
